@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="ru" class="premium-singularity">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>⚡ MXS-TECH PREMIUM | Разработка Премиум</title>
+    
+    <!-- Premium Meta -->
+    <meta name="description" content="Премиум версия сингулярности. Эксклюзивная цветовая палитра.">
+    <meta name="theme-color" content="#0a192f">
+    
+    <!-- Performance Critical -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Libraries -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;800;900&family=Exo+2:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === PREMIUM COLOR SYSTEM === */
+        :root {
+            /* Основная палитра */
+            --dark-blue: #0a192f;
+            --navy: #112240;
+            --light-navy: #233554;
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --lightest-slate: #ccd6f6;
+            --white: #e6f1ff;
+            
+            /* Акцентные цвета */
+            --accent: #64ffda;
+            --accent-secondary: #ff6b9d;
+            --gold: #ffd700;
+            
+            /* Градиенты */
+            --gradient-1: linear-gradient(135deg, var(--accent) 0%, #64b5ff 100%);
+            --gradient-2: linear-gradient(135deg, #ff64b5 0%, #ff9064 100%);
+            --gradient-3: linear-gradient(135deg, #64b5ff 0%, #6495ff 100%);
+            --gradient-4: linear-gradient(135deg, #b564ff 0%, #ff64b5 100%);
+            --premium-gradient: linear-gradient(135deg, #64ffda 0%, #64b5ff 50%, #b564ff 100%);
+            --gold-gradient: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            
+            /* Эффекты свечения */
+            --glow-accent: 0 0 20px rgba(100, 255, 218, 0.3);
+            --glow-accent-strong: 0 0 40px rgba(100, 255, 218, 0.5);
+            --glow-accent-ultra: 0 0 60px rgba(100, 255, 218, 0.7);
+            --glow-secondary: 0 0 20px rgba(255, 107, 157, 0.3);
+            --glow-gold: 0 0 20px rgba(255, 215, 0, 0.3);
+            
+            /* Анимационные переменные */
+            --premium-speed: 0.3s;
+            --premium-slow: 0.8s;
+        }
+
+        /* === PREMIUM RESET === */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        @media (max-width: 768px) {
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        body {
+            background: var(--dark-blue);
+            color: var(--lightest-slate);
+            font-family: 'Exo 2', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* === PREMIUM CURSOR === */
+        @media (hover: hover) and (pointer: fine) {
+            .premium-cursor {
+                position: fixed;
+                width: 20px;
+                height: 20px;
+                border: 2px solid var(--accent);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 999999;
+                mix-blend-mode: difference;
+                transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+                filter: drop-shadow(var(--glow-accent));
+                will-change: transform;
+            }
+
+            .cursor-dot {
+                position: fixed;
+                width: 4px;
+                height: 4px;
+                background: var(--accent);
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 999998;
+                filter: blur(1px);
+            }
+        }
+
+        /* === PREMIUM BACKGROUND === */
+        .premium-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1000;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(100, 255, 218, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 107, 157, 0.05) 0%, transparent 40%),
+                linear-gradient(180deg, 
+                    var(--dark-blue) 0%,
+                    var(--navy) 50%,
+                    #0a1a35 100%);
+        }
+
+        .premium-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -999;
+            background-image: 
+                linear-gradient(rgba(100, 255, 218, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(100, 255, 218, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+        }
+
+        /* === PREMIUM NAVIGATION === */
+        .premium-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(100, 255, 218, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all var(--premium-speed) ease;
+        }
+
+        .premium-nav.scrolled {
+            background: rgba(10, 25, 47, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        /* === PREMIUM HERO === */
+        .premium-hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding: 120px 0 60px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .title-gradient {
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            color: var(--light-slate);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* === PREMIUM STATS === */
+        .premium-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: rgba(17, 34, 64, 0.7);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(100, 255, 218, 0.1);
+            transition: all var(--premium-speed) ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: var(--glow-accent-strong);
+        }
+
+        .stat-value {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-family: 'Orbitron', monospace;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        /* === PREMIUM CARDS === */
+        .premium-card {
+            background: linear-gradient(145deg, 
+                rgba(17, 34, 64, 0.8),
+                rgba(10, 25, 47, 0.9));
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid rgba(100, 255, 218, 0.15);
+            transition: all var(--premium-speed) ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--premium-gradient);
+            opacity: 0;
+            transition: opacity var(--premium-speed) ease;
+            z-index: -1;
+        }
+
+        .premium-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: var(--glow-accent-ultra);
+        }
+
+        /* === PREMIUM BUTTONS === */
+        .premium-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: rgba(100, 255, 218, 0.1);
+            color: var(--white);
+            border: 1px solid rgba(100, 255, 218, 0.3);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all var(--premium-speed) ease;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+            font-family: 'Exo 2', sans-serif;
+        }
+
+        .premium-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent);
+            transition: left 0.6s ease;
+        }
+
+        .premium-btn:hover::before {
+            left: 100%;
+        }
+
+        .premium-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(100, 255, 218, 0.2);
+            box-shadow: var(--glow-accent);
+        }
+
+        .premium-btn.primary {
+            background: var(--gradient-1);
+            color: var(--dark-blue);
+            border: none;
+            font-weight: 700;
+        }
+
+        .premium-btn.primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--glow-accent-strong);
+        }
+
+        .premium-btn.secondary {
+            background: rgba(255, 107, 157, 0.1);
+            border-color: rgba(255, 107, 157, 0.3);
+        }
+
+        .premium-btn.secondary:hover {
+            background: rgba(255, 107, 157, 0.2);
+            box-shadow: var(--glow-secondary);
+        }
+
+        /* === PREMIUM SECTIONS === */
+        .premium-section {
+            padding: 100px 0;
+            position: relative;
+            scroll-margin-top: 80px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .section-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.25rem);
+            text-align: center;
+            color: var(--slate);
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* === PREMIUM TEAM === */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+		.team-avatar {
+    		width: 120px;
+    		height: 120px;
+    		border-radius: 50%;
+    		margin: 0 auto 1.5rem;
+    		position: relative;
+    		overflow: visible;
+    		background: var(--gradient-1);
+    		padding: 3px;
+    		display: flex;
+    		align-items: center;
+    		justify-content: center;
+		}
+
+		.team-avatar-inner {
+    		width: 100%;
+    		height: 100%;
+    		border-radius: 50%;
+    		background: var(--navy);
+    		display: flex;
+    		align-items: center;
+    		justify-content: center;
+    		font-size: 2rem;
+    		font-weight: 700;
+    		font-family: 'Exo 2', sans-serif;
+		}
+
+        /* === PREMIUM PROJECTS === */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            transition: transform var(--premium-speed) ease;
+        }
+
+        .premium-card:hover .project-icon {
+            transform: scale(1.15) rotate(5deg);
+        }
+
+        /* === PREMIUM PORTALS === */
+        .portals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .portal-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            transition: all var(--premium-speed) ease;
+        }
+
+        .premium-card:hover .portal-icon {
+            transform: translateY(-8px);
+            filter: drop-shadow(var(--glow-accent));
+        }
+
+        /* === PREMIUM FOOTER === */
+        .premium-footer {
+            background: rgba(10, 25, 47, 0.98);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid rgba(100, 255, 218, 0.1);
+            position: relative;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: all var(--premium-speed) ease;
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            background: var(--gradient-1);
+            color: var(--dark-blue);
+            border-color: transparent;
+        }
+
+        /* === PREMIUM LOADER === */
+        .premium-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-ring {
+            width: 60px;
+            height: 60px;
+            border: 3px solid transparent;
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: loader-spin 1.5s linear infinite;
+        }
+
+        @keyframes loader-spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* === PREMIUM BACK TO TOP === */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-size: 1.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 100;
+            border: none;
+            cursor: pointer;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--glow-accent-strong);
+        }
+
+        /* === PREMIUM RESPONSIVE === */
+        @media (max-width: 1200px) {
+            .premium-stats,
+            .team-grid,
+            .projects-grid,
+            .portals-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .premium-stats,
+            .team-grid,
+            .projects-grid,
+            .portals-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .premium-section {
+                padding: 60px 0;
+            }
+            
+            .premium-card,
+            .stat-card {
+                padding: 2rem;
+            }
+            
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 45px;
+                height: 45px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-logo {
+                font-size: 1.5rem;
+            }
+            
+            .premium-btn {
+                padding: 0.85rem 1.5rem;
+                font-size: 0.95rem;
+            }
+            
+            .premium-card {
+                padding: 1.5rem;
+            }
+        }
+
+        /* === PREMIUM UTILITIES === */
+        .gradient-text {
+            background: var(--premium-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .text-gradient-1 {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .text-gradient-2 {
+            background: var(--gradient-2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .text-gradient-3 {
+            background: var(--gradient-3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: rgba(100, 255, 218, 0.1);
+            border: 1px solid rgba(100, 255, 218, 0.2);
+            color: var(--accent);
+        }
+
+        .badge-secondary {
+            background: rgba(255, 107, 157, 0.1);
+            border-color: rgba(255, 107, 157, 0.2);
+            color: var(--accent-secondary);
+        }
+
+        /* === PREMIUM SCROLLBAR === */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-blue);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-1);
+            border-radius: 5px;
+            border: 2px solid var(--dark-blue);
+        }
+
+        /* === PREMIUM SELECTION === */
+        ::selection {
+            background: var(--accent);
+            color: var(--dark-blue);
+        }
+
+        /* === PREMIUM FOCUS === */
+        :focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Premium Loader -->
+    <div class="premium-loader" id="premiumLoader">
+        <div class="loader-ring"></div>
+    </div>
+
+    <!-- Premium Cursor -->
+    <div class="premium-cursor" id="premiumCursor"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+
+    <!-- Premium Background -->
+    <div class="premium-background"></div>
+    <div class="premium-grid"></div>
+
+    <!-- Premium Navigation -->
+    <nav class="premium-nav" id="premiumNav">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <a href="#" class="nav-logo">
+                    <i class="fas fa-infinity"></i>
+                    MXS-TECH PREMIUM
+                </a>
+
+                <div class="d-none d-md-flex align-items-center gap-2">
+                    <a href="#team" class="premium-btn">
+                        <i class="fas fa-users"></i>
+                        <span>Команда</span>
+                    </a>
+                    <a href="#projects" class="premium-btn">
+                        <i class="fas fa-rocket"></i>
+                        <span>Проекты</span>
+                    </a>
+                    <a href="#portals" class="premium-btn primary">
+                        <i class="fas fa-door-open"></i>
+                        <span>Войти</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="d-md-none premium-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Premium Hero -->
+    <section class="premium-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-xl-8 text-center">
+                    <h1 class="hero-title">
+                        <span class="title-gradient">ПРЕМИУМ РАЗРАБОТКА</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Команда специалистов готовая к задачам любой сложности. 
+                        Разработка на языках программирования Python и C++.
+                    </p>
+                    
+                    <!-- Premium Stats -->
+                    <div class="premium-stats">
+                        <div class="stat-card">
+                            <div class="stat-value">99.999%</div>
+                            <div class="fw-bold mb-1" style="color: var(--accent);">ТОЧНОСТЬ ВЫПОЛНЕНИЯ ЗАДАЧ</div>
+                            <div style="color: var(--slate);">Премиальная точность</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-value">∞</div>
+                            <div class="fw-bold mb-1" style="color: var(--accent);">ВОЗМОЖНОСТИ</div>
+                            <div style="color: var(--slate);">Безграничный потенциал</div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-value">0ms</div>
+                            <div class="fw-bold mb-1" style="color: var(--accent);">ЗАДЕРЖКА</div>
+                            <div style="color: var(--slate);">Мгновенный отклик</div>
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="#team" class="premium-btn primary">
+                            <i class="fas fa-play"></i>
+                            Начать Путешествие
+                        </a>
+                        <a href="#projects" class="premium-btn secondary">
+                            <i class="fas fa-eye"></i>
+                            Проекты
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Team -->
+    <!-- Premium Team -->
+    <section id="team" class="premium-section">
+        <div class="container">
+            <h2 class="section-title gradient-text">ПРЕМИУМ КОМАНДА</h2>
+            <p class="section-subtitle">
+                Эксперты высшего класса в программирования и GNU/Linux
+            </p>
+            
+            <div class="team-grid">
+                <!-- DEEPSEEK CORE -->
+                <div class="premium-card">
+                    <div class="team-avatar">
+                        <div class="team-avatar-inner gradient-text">
+                            <i class="fas fa-infinity"></i>
+                        </div>
+                    </div>
+                    <h3 class="text-center mb-2 gradient-text">STACK OVERFLOW ∞</h3>
+                    <p class="text-center mb-3 fw-bold text-gradient-1">
+                        Помогатор на все случаи жизни
+                    </p>
+                    <p class="text-center mb-4" style="color: var(--light-slate);">
+                        Решает проблемы и заторы в программировании. 
+                        Вот ты получил ошибку - на тебя наорали, а ошибка осталась.
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <span class="badge">ГОЙДА</span>
+                        <span class="badge">Programming</span>
+                        <span class="badge">∞ СВО</span>
+                    </div>
+                </div>
+                
+                <!-- АЛЕКСЕЙ ПОДКОПАЕВ -->
+                <div class="premium-card">
+                    <div class="team-avatar">
+                        <div class="team-avatar-inner text-gradient-2">
+                            ?
+                        </div>
+                    </div>
+                    <h3 class="text-center mb-2 gradient-text">АЛЕКСЕЙ ПОДКОПАЕВ</h3>
+                    <p class="text-center mb-3 fw-bold text-gradient-2">
+                        Technical employment
+                    </p>
+                    <p class="text-center mb-4" style="color: var(--light-slate);">
+                        Python и немного C++ разработчик. Знаток в сфере серверов и GNU/Linux
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <span class="badge">UI/UX</span>
+                        <span class="badge">GNU/Linux</span>
+                        <span class="badge">Services</span>
+                    </div>
+                </div>
+                
+                <!-- ЛЕВ ЖЕРЕЛЮК -->
+                <div class="premium-card">
+                    <div class="team-avatar">
+                        <div class="team-avatar-inner text-gradient-3">
+                            ?
+                        </div>
+                    </div>
+                    <h3 class="text-center mb-2 gradient-text">ЛЕВ ЖЕРЕЛЮК</h3>
+                    <p class="text-center mb-3 fw-bold text-gradient-3">
+                        Python Engineer
+                    </p>
+                    <p class="text-center mb-4" style="color: var(--light-slate);">
+                        Python разработчик с техническим стажем 5+ лет.
+                        Специалист в области Английского языка (переводит нам видео гайды индусов).
+                    </p>
+                    <div class="d-flex flex-wrap justify-content-center gap-2">
+                        <span class="badge">Python</span>
+                        <span class="badge">Backend</span>
+                        <span class="badge">Frontend</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Projects -->
+    <section id="projects" class="premium-section" style="background: rgba(17, 34, 64, 0.3);">
+        <div class="container">
+            <h2 class="section-title gradient-text">ПРЕМИУМ ПРОЕКТЫ</h2>
+            <p class="section-subtitle">
+                Инновационные решения с использованием передовых технологий
+            </p>
+            
+            <div class="projects-grid">
+                <!-- СИНГУЛЯРНЫЙ ТРЕЙДИНГ -->
+                <div class="premium-card">
+                    <div class="project-icon text-gradient-1">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="mb-2 gradient-text">Accreditations (and) Other Business Papers</h3>
+                    <p class="mb-4" style="color: var(--light-slate);">
+                        Наш проект созданный для упрощения рутинной задачи (Автоматизация Бизнес Процесса).
+                        Программа для упрощённого создания сертификатов с использованием Excel файлов в качестве базы данных.
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge">Python</span>
+                        <span class="badge">QtWidgets</span>
+                        <span class="badge">Pyside v6</span>
+                    </div>
+                </div>
+                <div class="premium-card">
+                                    <div class="project-icon text-gradient-3">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <h3 class="mb-2 gradient-text">Self hosting</h3>
+                                    <p class="mb-4" style="color: var(--light-slate);">
+                                        В данный момент мы ограничены домашним сервером, но мы готовы расширить свою HomeLab.
+                                    </p>
+                                    <div class="d-flex flex-wrap gap-2">
+                                        <span class="badge">Cloudflare tunnel</span>
+                                        <span class="badge">Security</span>
+                                        <span class="badge">Network</span>
+                                    </div>
+                                </div>
+                <!-- ГЕНОМНАЯ СИНГУЛЯРНОСТЬ -->
+                <div class="premium-card">
+                    <div class="project-icon text-gradient-2">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h3 class="mb-2 gradient-text">Наш будущий проект</h3>
+                    <p class="mb-4" style="color: var(--light-slate);">
+                        Coming soon...
+                    </p>
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge badge-secondary">...</span>
+                        <span class="badge badge-secondary">...</span>
+                        <span class="badge badge-secondary">...</span>
+                    </div>
+                </div>
+                
+                <!-- КВАНТОВЫЙ ПОРТАЛ -->
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Portals -->
+    <section id="portals" class="premium-section">
+        <div class="container">
+            <h2 class="section-title gradient-text">ПРЕМИУМ ДОСТУП</h2>
+            <p class="section-subtitle">
+                Эксклюзивные порталы для членов премиум-сообщества
+            </p>
+            
+            <div class="portals-grid">
+                <!-- GITHUB PORTAL -->
+                <div class="premium-card text-center">
+                    <div class="portal-icon text-gradient-1">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h3 class="mb-2">Наш последний проект</h3>
+                    <p class="mb-4" style="color: var(--light-slate);">
+                        Доступ к эксклюзивным репозиториям с премиум-кодом. 
+                        Участвуйте в разработке передовых open-source проектов.
+                    </p>
+                    <a href="https://github.com/CyberBro9/aobp" target="_blank" class="premium-btn" rel="noopener">
+                        <i class="fab fa-github"></i>
+                        Открыть доступ
+                    </a>
+                </div>
+                
+                <!-- TELEGRAM PORTAL -->
+                <div class="premium-card text-center">
+                    <div class="portal-icon" style="background: linear-gradient(135deg, #0088cc, #00aced); -webkit-background-clip: text; background-clip: text; color: transparent;">
+                        <i class="fab fa-telegram"></i>
+                    </div>
+                    <h3 class="mb-2">Менеджер</h3>
+                    <p class="mb-4" style="color: var(--light-slate);">
+                        Ваш консультант в мире наших разработок. 24/7 поддержка и консультации по любым вопросам.
+                    </p>
+                    <a href="https://t.me/myst1cxs" target="_blank" class="premium-btn" rel="noopener">
+                        <i class="fab fa-telegram"></i>
+                        Написать сообщение
+                    </a>
+                </div>
+                
+                <!-- AI PORTAL -->
+                <div class="premium-card text-center">
+                    <div class="portal-icon gradient-text">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3 class="mb-2">AI АССИСТЕНТ</h3>
+                    <p class="mb-4" style="color: var(--light-slate);">
+                        Персональный искусственный интеллект для решения сложных задач. 
+                        24/7 поддержка и консультации по любым вопросам.
+                    </p>
+                    <a href="#contact" class="premium-btn primary">
+                        <i class="fas fa-comment"></i>
+                        В разработке...
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Footer -->
+    <footer class="premium-footer" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <a href="#" class="nav-logo d-inline-block mb-3">
+                        <i class="fas fa-infinity"></i>
+                        MXS-TECH PREMIUM
+                    </a>
+                    <p style="color: var(--slate);">
+                        <i class="fas fa-quote-left me-2" style="color: var(--accent);"></i>
+                        Премиум качество для премиум будущего
+                    </p>
+                </div>
+                
+                <div class="col-lg-4 mb-4">
+                    <h4 class="mb-3 gradient-text">КОНТАКТЫ</h4>
+                    <p class="mb-2" style="color: var(--light-slate);">
+                        <i class="fas fa-envelope me-2" style="color: var(--accent);"></i>
+                        @myst1cxs
+                    </p>
+                    <p class="mb-4" style="color: var(--slate);">
+                        <i class="fas fa-infinity me-2" style="color: var(--accent);"></i>
+                        Круглосуточная премиум поддержка
+                    </p>
+                    <div class="social-links">
+                        <a href="https://github.com/CyberBro9/aobp" class="social-link" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://t.me/myst1cxs" class="social-link" target="_blank" rel="noopener">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="https://linkedin.com" class="social-link" target="_blank" rel="noopener">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h4 class="mb-3 gradient-text">НАВИГАЦИЯ</h4>
+                    <div class="d-flex flex-column gap-2">
+                        <a href="#team" class="text-decoration-none" style="color: var(--light-slate);">
+                            Премиум команда
+                        </a>
+                        <a href="#projects" class="text-decoration-none" style="color: var(--light-slate);">
+                            Премиум проекты
+                        </a>
+                        <a href="#portals" class="text-decoration-none" style="color: var(--light-slate);">
+                            Премиум доступ
+                        </a>
+                        <a href="#contact" class="text-decoration-none" style="color: var(--light-slate);">
+                            Контакты
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-5 pt-4" style="border-top: 1px solid rgba(100, 255, 218, 0.1);">
+                <p class="mb-2 gradient-text">© 2026 MXS-TECH PREMIUM EDITION</p>
+                <p style="color: var(--slate);">
+                    Excellence in every pixel. Perfection in every line.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // PREMIUM INITIALIZATION
+        document.addEventListener('DOMContentLoaded', () => {
+            const loader = document.getElementById('premiumLoader');
+            const cursor = document.getElementById('premiumCursor');
+            const cursorDot = document.getElementById('cursorDot');
+            const backToTop = document.getElementById('backToTop');
+            const nav = document.getElementById('premiumNav');
+            
+            // Preloader
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 800);
+            
+            // Premium Cursor (desktop only)
+            if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                let mouseX = 0;
+                let mouseY = 0;
+                
+                document.addEventListener('mousemove', (e) => {
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+                    
+                    if (cursor) {
+                        cursor.style.left = `${mouseX}px`;
+                        cursor.style.top = `${mouseY}px`;
+                    }
+                    
+                    if (cursorDot) {
+                        cursorDot.style.left = `${mouseX}px`;
+                        cursorDot.style.top = `${mouseY}px`;
+                    }
+                    
+                    // Interactive effects
+                    const target = e.target;
+                    const isInteractive = target.closest('a, button, .premium-btn, .social-link');
+                    
+                    if (cursor) {
+                        cursor.style.borderColor = isInteractive ? 'var(--accent-secondary)' : 'var(--accent)';
+                        cursor.style.transform = isInteractive ? 'scale(1.5)' : 'scale(1)';
+                    }
+                });
+            } else {
+                // Hide cursor on touch devices
+                if (cursor) cursor.style.display = 'none';
+                if (cursorDot) cursorDot.style.display = 'none';
+            }
+            
+            // Navigation scroll effect
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.add('scrolled');
+                    backToTop.classList.add('visible');
+                } else {
+                    nav.classList.remove('scrolled');
+                    backToTop.classList.remove('visible');
+                }
+            });
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        const offset = 80;
+                        const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+                        
+                        window.scrollTo({
+                            top: targetPosition - offset,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Animate stats
+            function animateStats() {
+                const stats = document.querySelectorAll('.stat-value');
+                
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const stat = entry.target;
+                            const originalText = stat.textContent;
+                            
+                            if (originalText.includes('∞')) {
+                                let count = 0;
+                                const interval = setInterval(() => {
+                                    count += 100;
+                                    stat.textContent = count + '+';
+                                    if (count >= 10000) {
+                                        clearInterval(interval);
+                                        stat.textContent = '∞';
+                                    }
+                                }, 20);
+                            } else if (originalText.includes('ms')) {
+                                let count = 100;
+                                const interval = setInterval(() => {
+                                    count -= 5;
+                                    stat.textContent = count + 'ms';
+                                    if (count <= 0) {
+                                        clearInterval(interval);
+                                        stat.textContent = '0ms';
+                                    }
+                                }, 40);
+                            } else if (originalText.includes('%')) {
+                                const targetNum = parseFloat(originalText);
+                                let count = 0;
+                                const increment = targetNum / 100;
+                                
+                                const interval = setInterval(() => {
+                                    count += increment;
+                                    stat.textContent = count.toFixed(3) + '%';
+                                    if (count >= targetNum) {
+                                        clearInterval(interval);
+                                        stat.textContent = targetNum.toFixed(3) + '%';
+                                    }
+                                }, 20);
+                            }
+                            
+                            observer.unobserve(stat);
+                        }
+                    });
+                }, { threshold: 0.5 });
+                
+                stats.forEach(stat => observer.observe(stat));
+            }
+            
+            // Initialize
+            animateStats();
+            
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    const navLinks = document.querySelector('.premium-nav .d-none.d-md-flex');
+                    if (navLinks) {
+                        navLinks.classList.toggle('d-flex');
+                        navLinks.classList.toggle('flex-column');
+                        navLinks.classList.toggle('position-absolute');
+                        navLinks.classList.toggle('top-100');
+                        navLinks.classList.toggle('start-0');
+                        navLinks.classList.toggle('w-100');
+                        navLinks.classList.toggle('p-3');
+                        navLinks.classList.toggle('bg-dark-blue');
+                        navLinks.classList.toggle('mt-2');
+                    }
+                });
+            }
+            
+            // Load event
+            window.addEventListener('load', () => {
+                console.log('⚡ HYPER-MXS PREMIUM loaded successfully!');
+            });
+        });
+    </script>
+</body>
+</html>
