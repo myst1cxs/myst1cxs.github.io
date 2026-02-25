@@ -685,6 +685,52 @@
             outline: 2px solid var(--accent);
             outline-offset: 2px;
         }
+       /* -------------------------------------------------- */
+        /* ABSOLUTELY GUARANTEED PERCENT VISIBILITY FIX */
+        /* -------------------------------------------------- */
+        
+        /* 1. Убираем любые обрезания на всех уровнях */
+        .stat-card,
+        .premium-stats,
+        .container,
+        .row,
+        .col-lg-10,
+        .col-xl-8 {
+            overflow: visible !important;
+        }
+        
+        /* 2. Запрещаем сжатие и перенос текста */
+        .stat-value {
+            white-space: nowrap !important;
+            overflow: visible !important;
+            display: inline-block !important;  /* ширина по содержимому */
+            max-width: none !important;
+            flex-shrink: 0 !important;         /* если родитель flex */
+            width: auto !important;
+            font-size: clamp(1.8rem, 6vw, 2.8rem) !important; /* максимум 2.8rem */
+            letter-spacing: -0.02em;            /* небольшая экономия места */
+        }
+        
+        /* 3. Для ноутбуков и планшетов — уменьшаем шрифт до безопасного */
+        @media (min-width: 768px) and (max-width: 1399.98px) {
+            .stat-value {
+                font-size: clamp(1.5rem, 4vw, 2.2rem) !important;
+            }
+        }
+        
+        /* 4. Уменьшаем горизонтальные отступы в карточках */
+        .stat-card {
+            padding-left: 1.2rem !important;
+            padding-right: 1.2rem !important;
+        }
+        
+        /* 5. Если ничего не помогает — добавляем псевдоэлемент со знаком процента,
+              который будет виден всегда (как запасной вариант) */
+        .stat-value[data-percent]::after {
+            content: "%";
+            display: inline-block;
+            margin-left: 1px; /* небольшой отступ */
+        }
     </style>
 </head>
 <body>
@@ -750,7 +796,7 @@
 
                     <div class="premium-stats">
                         <div class="stat-card">
-                            <div class="stat-value">99.999% </div>
+                            <div class="stat-value" data-percent>99.999</div>
                             <div class="fw-bold mb-1" style="color: var(--accent);">ТОЧНОСТЬ ВЫПОЛНЕНИЯ ЗАДАЧ</div>
                             <div style="color: var(--slate);">Максимальная точность</div>
                         </div>
